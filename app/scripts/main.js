@@ -44,10 +44,6 @@ $(document).ready(function() {
     }
   }
 
-  if (!context) {
-    ("body").append("<div class='container'><h4>Browser not supported. Please upgrade to a modern browser (i.e. Chrome, Firefox, or Safari)</h4>");
-  }
-
 });
 
 var updateUI = function() {
@@ -73,3 +69,7 @@ var updateUI = function() {
     }
   }
 updateUI();
+
+if (window.AudioContext) {
+    ("body").append("<div class='container'><h4>Browser not supported. Please upgrade to a modern browser (i.e. Chrome, Firefox, or Safari)</h4>");
+}
