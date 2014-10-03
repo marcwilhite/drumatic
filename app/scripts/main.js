@@ -46,8 +46,10 @@ $(document).ready(function() {
 
 });
 
+var time = new Date();
 var updateUI = function() {
-    requestAnimationFrame(updateUI);
+  requestAnimationFrame(updateUI);
+  if ((new Date() - time) > 40) {
     for (var k in machine.drums) {
       for (var i = 0; i < 32; i++) {
         $('.'+k+'-btn-'+ i).blur();
@@ -67,9 +69,11 @@ var updateUI = function() {
         }
       }
     }
+    time = new Date();
   }
+}
 updateUI();
 
-if (window.AudioContext) {
-    ("body").append("<div class='container'><h4>Browser not supported. Please upgrade to a modern browser (i.e. Chrome, Firefox, or Safari)</h4>");
+if (!window.AudioContext) {
+    $("body").append("<div class='container'><h4>Browser not supported. Please upgrade to a modern browser (i.e. Chrome, Firefox, or Safari)</h4>");
 }
