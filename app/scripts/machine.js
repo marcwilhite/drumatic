@@ -85,13 +85,13 @@ Machine.prototype.loadBuffers = function() {
     var bufferLoader = new BufferLoader(
         this.context,
         this.audioFiles,
-        this.finishedLoading, 
+        this._finishedLoading, 
         this
     );
     bufferLoader.load();
 };
 
-Machine.prototype.finishedLoading = function (bufferList, loaderContext) {
+Machine.prototype._finishedLoading = function (bufferList, loaderContext) {
     loaderContext.audioBuffers['kick'] = bufferList[0];
     loaderContext.audioBuffers['snare'] = bufferList[1];
     loaderContext.audioBuffers['clhat'] = bufferList[2];
