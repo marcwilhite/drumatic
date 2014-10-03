@@ -1,3 +1,50 @@
+@font-face {
+  font-family: 'Glyphicons Social Regular';
+  src: url('../fonts/glyphicons-social-regular.eot');
+  src: url('../fonts/glyphicons-social-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-social-regular.woff') format('woff'), url('../fonts/glyphicons-social-regular.ttf') format('truetype'), url('../fonts/glyphicons-social-regular.svg#glyphicons_socialregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.social {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  color: #64645d;
+  text-decoration: none;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+}
+.social:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+  font: 24px/1em 'Glyphicons Social Regular';
+  font-style: normal;
+  font-weight: normal;
+  color: #64645d;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.social.github:before {
+  content: "\E022";
+}
+
+.social-icon.github {
+  background-position: -48px -96px;
+}
+
+.copyright {
+  margin-right: 510px;
+}
+
 .btn {
   min-width: 40px;
 }
