@@ -18,13 +18,12 @@ $(document).ready(function() {
 
   $('#tempo').slider({
     formatter: function(value) {
-      console.log(value);
       return value;
     }
   });
+
   $('#tempo').slider().on('slide', function(event){
-    machine.tempo = event.value;
-      
+    machine.tempo = event.value;     
   })
 
   $('#volume').slider({
@@ -32,6 +31,7 @@ $(document).ready(function() {
       return value;
     }
   });
+
   $('#volume').slider().on('slide', function(event){
       machine.gain.value = (event.value / 50) - 1.0;
   });
@@ -43,13 +43,12 @@ $(document).ready(function() {
       });
     }
   }
-
 });
 
-var time = new Date();
+var frameCheck = new Date();
 var updateUI = function() {
   requestAnimationFrame(updateUI);
-  if ((new Date() - time) > 40) {
+  if ((new Date() - frameCheck) > 40) {
     for (var k in machine.drums) {
       for (var i = 0; i < 32; i++) {
         $('.'+k+'-btn-'+ i).blur();
@@ -69,7 +68,7 @@ var updateUI = function() {
         }
       }
     }
-    time = new Date();
+    frameCheck = new Date();
   }
 }
 updateUI();
