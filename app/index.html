@@ -30,6 +30,14 @@
         to improve your experience.
     </p>
     <![endif]-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
     <div class="container">
         <div class="header">
@@ -64,8 +72,8 @@
                     <li role="presentation">
                         <a id="pattern-pattern8" role="menuitem" tabindex="-1" href="#">Pattern 8</a>
                     </li>
-                     <li role="presentation" class="divider"></li>
-                     <li role="presentation">
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation">
                         <a id="save-patterns" role="menuitem" tabindex="-1" href="#">Save Patterns</a>
                     </li>
                 </ul>
@@ -410,18 +418,24 @@
                 <input id="volume" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
             </span>
         </div>
-        <div class="pattern-notify"><h4>Playing Pattern: 1</h4>Press 1 to 8 trigger pattern. Press SHIFT + 1 to 8 to copy pattern. Press SPACE to toggle playback and RETURN to stop.</div>
+        <div class="pattern-notify">
+            <h4>Playing Pattern: 1</h4>
+            Press 1 to 8 trigger pattern. Press SHIFT + 1 to 8 to copy pattern. Press SPACE to toggle playback and RETURN to stop.
+        </div>
         <div class="footer">
             <p>
-                <span class="copyright">
-                    &#169; 2014
-                    <a href="http://www.marcwilhite.com">Marc Wilhite</a>
-                </span>
+               <div class="fb-like" data-href="http://www.groovemechanics.com/drumatic/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                <div class="github">
                 <a href="https://github.com/marcwilhite/drumatic" class="social github"> <strong>github</strong>
                     <span></span>
                 </a>
+            </div>
             </p>
         </div>
+                <div class="copyright">
+                    &#169; 2014
+                    <a href="http://www.marcwilhite.com">Marc Wilhite</a>
+                </div>
 
     </div>
 

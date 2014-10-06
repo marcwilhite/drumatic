@@ -42,7 +42,7 @@
 }
 
 .copyright {
-  margin-right: 495px;
+  margin-left: 325px;
 }
 
 .btn {
@@ -165,4 +165,11 @@ body {
 
 .pattern-notify {
   margin-top: 25px;
+}
+
+.fb-like {
+  float: left;
+}
+.github {
+  float: right;
 }
