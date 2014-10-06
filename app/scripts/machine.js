@@ -24,23 +24,30 @@ function Machine (context) {
   this.tick = 0;
 }
 
-Machine.prototype.play = function (tick) {
+Machine.prototype.play = function(tick) {
   if (this.togglePlay) {
     return;
   }
   this.togglePlay = true;
   this.tick = tick ? tick : 0;
   var _this = this;
-  var start = function loop () {
-      if (_this.togglePlay) setTimeout(loop, 15000/_this.tempo);
-      for (var k in _this.drums) {
-        if (_this.drums[k][_this.tick]) {
-          _this.playSound(_this.audioBuffers[k]);
+  var currentTime = this.context.currentTime;
+  var updateAudio = function() {
+    if (_this.togglePlay) {
+      requestAnimationFrame(updateAudio);
+      if (_this.context.currentTime - currentTime >= 15/_this.tempo) {
+        console.log("play");
+        for (var k in _this.drums) {
+          if (_this.drums[k][_this.tick]) {
+            _this.playSound(_this.audioBuffers[k]);
+          }
         }
+        _this.tick = _this.tick < 31 ? _this.tick + 1 : 0;
+        currentTime = _this.context.currentTime;
       }
-      _this.tick = _this.tick < 31 ? _this.tick + 1 : 0;
+    };
   };
-  start();
+  updateAudio();
 };
 
 Machine.prototype.stop = function () {
