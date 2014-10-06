@@ -34,8 +34,59 @@
     <div class="container">
         <div class="header">
             <h3 class="text-muted">JS-808 - DRUMATIC</h3>
+            <div class="dropdown kit-drop">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    Patterns
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation">
+                        <a id="pattern-pattern1" role="menuitem" tabindex="-1" href="#">Pattern 1</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern2" role="menuitem" tabindex="-1" href="#">Pattern 2</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern3" role="menuitem" tabindex="-1" href="#">Pattern 3</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern4" role="menuitem" tabindex="-1" href="#">Pattern 4</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern5" role="menuitem" tabindex="-1" href="#">Pattern 5</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern6" role="menuitem" tabindex="-1" href="#">Pattern 6</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern7" role="menuitem" tabindex="-1" href="#">Pattern 7</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="pattern-pattern8" role="menuitem" tabindex="-1" href="#">Pattern 8</a>
+                    </li>
+                     <li role="presentation" class="divider"></li>
+                     <li role="presentation">
+                        <a id="save-patterns" role="menuitem" tabindex="-1" href="#">Save Patterns</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown pattern-drop">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+                    Kits
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                    <li role="presentation">
+                        <a id="kits-old-school" role="menuitem" tabindex="-1" href="#">Old School</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="kits-techno" role="menuitem" tabindex="-1" href="#">Techno</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="main">
+        <div class="spacer"></div>
+        <div class="main clearfix">
             <div class="button-holder">
                 <div class="buttons">
                     <div class="drum-label">Kick</div>
@@ -339,6 +390,7 @@
                 </div>
             </div>
         </div>
+
         <div class="buttons-playback">
             <button type="button" class="btn btn-default btn-lg button-pause btn-ctrl">
                 <span class="glyphicon glyphicon-pause"></span>
@@ -351,17 +403,20 @@
             </button>
             <span class="tempo-label">Tempo</span>
             <span class="tempo">
-                <input id="tempo" data-slider-id='ex1Slider' type="text" data-slider-min="40" data-slider-max="240" data-slider-step="0.5" data-slider-value="110"/>
+                <input id="tempo" data-slider-id='ex1Slider' type="text" data-slider-min="40" data-slider-max="240" data-slider-step="0.5" data-slider-value="120"/>
             </span>
             <span class="volume-label">Volume</span>
             <span class="volume">
                 <input id="volume" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>
             </span>
         </div>
-
+        <div class="pattern-notify"><h4>Playing Pattern: 1</h4>Press 1 to 8 trigger pattern. Press SHIFT + 1 to 8 to copy pattern. Press SPACE to toggle playback and RETURN to stop.</div>
         <div class="footer">
             <p>
-                <span class="copyright">&#169; 2014 Marc Wilhite</span>
+                <span class="copyright">
+                    &#169; 2014
+                    <a href="http://www.marcwilhite.com">Marc Wilhite</a>
+                </span>
                 <a href="https://github.com/marcwilhite/drumatic" class="social github"> <strong>github</strong>
                     <span></span>
                 </a>
@@ -405,8 +460,13 @@
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/bootstrap-slider.js"></script>
     <script src="scripts/BufferLoader.js"></script>
+    <script src="scripts/patterns.js"></script>
+    <script src="scripts/patternStorage.js"></script>
+    <script src="scripts/kits.js"></script>
     <script src="scripts/Machine.js"></script>
+    <script src="scripts/mousetrap.min.js"></script>
     <script src="scripts/main.js"></script>
+
     <!-- endbuild -->
 </body>
 </html>

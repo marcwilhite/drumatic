@@ -15,27 +15,9 @@ function Machine (context) {
 
   this.audioBuffers = {};
 
-  this.drums = {
-    kick: [1,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0],
-    snare: [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,1],
-    clhat: [0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0],
-    ophat: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-    clap: [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0],
-    rim: [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    cowbell: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],
-    clave: [0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0]
-  };
+  this.drums = {};
 
-  this.audioFiles =   ['media/kick.mp3',
-                      'media/snare.mp3',
-                      'media/clsdHat.mp3',
-                      'media/opHat.mp3',
-                      'media/clap.mp3',
-                      'media/rim.mp3',
-                      'media/cowbell.mp3',
-                      'media/clave.mp3'];
-
-  this.tempo = 110;
+  this.tempo = 120;
 
   this.togglePlay = false;
 
@@ -81,15 +63,27 @@ Machine.prototype.playSound = function (buffer) {
   source.start(this.context.currentTime);
 };
 
-Machine.prototype.loadBuffers = function() {
+Machine.prototype.loadBuffers = function(audioFiles) {
     var bufferLoader = new BufferLoader(
         this.context,
-        this.audioFiles,
+        audioFiles,
         this._finishedLoading, 
         this
     );
     bufferLoader.load();
 };
+
+Machine.prototype.loadPattern = function(pattern) {
+  this.drums = pattern.drums;
+};
+
+Machine.prototype.copyPattern = function(patternIndex) {
+  for (var key in this.drums) {
+    for (var i = 0; i < 32; i++) {
+      patterns['pattern'+patternIndex].drums[key][i] = this.drums[key][i];
+    }
+  }
+}
 
 Machine.prototype._finishedLoading = function (bufferList, loaderContext) {
     loaderContext.audioBuffers['kick'] = bufferList[0];
@@ -103,7 +97,8 @@ Machine.prototype._finishedLoading = function (bufferList, loaderContext) {
 };
 
 var machine = new Machine(context);
-machine.loadBuffers();
+machine.loadPattern(patterns.pattern1);
+machine.loadBuffers(kits.oldSchool);
 
 
 

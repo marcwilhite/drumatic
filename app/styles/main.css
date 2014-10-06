@@ -83,7 +83,7 @@ body {
 .header,
 .marketing,
 .footer {
-  width: 740px;
+  width: 745px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -94,11 +94,12 @@ body {
 }
 
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
+.header  {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
+  /*float: left;*/
 }
 
 /* Custom page footer */
@@ -112,7 +113,7 @@ body {
 .buttons-playback {
 /*  margin-top: 500px;
 */
-  margin-top: 540px;
+  margin-top: 400px;
   width: 740px;
 }
 
@@ -135,4 +136,33 @@ body {
 
 .volume-label {
   margin-left: 31px;
+}
+
+.pattern-drop {
+  position: absolute;
+  float: right;
+  transform: translateY(-50px);
+}
+
+.pattern-drop .btn {
+  width: 100px;
+}
+
+.kit-drop {
+  position: absolute;
+  margin-left: 25px;
+  float: right;
+  transform: translateY(-50px);
+}
+
+.kit-drop .btn {
+  width: 100px;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.pattern-notify {
+  margin-top: 25px;
 }
