@@ -36,7 +36,6 @@ Machine.prototype.play = function(tick) {
     if (_this.togglePlay) {
       requestAnimationFrame(updateAudio);
       if (_this.context.currentTime - currentTime >= 15/_this.tempo) {
-        console.log("play");
         for (var k in _this.drums) {
           if (_this.drums[k][_this.tick]) {
             _this.playSound(_this.audioBuffers[k]);
