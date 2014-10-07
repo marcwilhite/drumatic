@@ -31,23 +31,24 @@ Machine.prototype.play = function(tick) {
   this.togglePlay = true;
   this.tick = tick ? tick : 0;
   var _this = this;
-  var currentTime = this.context.currentTime;
+  var nextNoteTime = this.context.currentTime + 15/this.tempo;
   var updateAudio = function() {
     if (_this.togglePlay) {
-      requestAnimationFrame(updateAudio);
-      if (_this.context.currentTime - currentTime >= 15/_this.tempo) {
+      requestAnimFrame(updateAudio);
+      while (nextNoteTime < _this.context.currentTime + 0.1) {
         for (var k in _this.drums) {
           if (_this.drums[k][_this.tick]) {
-            _this.playSound(_this.audioBuffers[k]);
+            _this.playSound(_this.audioBuffers[k], nextNoteTime + 15/_this.tempo);
           }
         }
+        nextNoteTime += 15/_this.tempo;
         _this.tick = _this.tick < 31 ? _this.tick + 1 : 0;
-        currentTime = _this.context.currentTime;
       }
-    };
+    }
   };
   updateAudio();
 };
+
 
 Machine.prototype.stop = function () {
     var _this = this;
@@ -61,12 +62,12 @@ Machine.prototype.pause = function () {
     return this.tick;
 }
 
-Machine.prototype.playSound = function (buffer) {
+Machine.prototype.playSound = function (buffer, time) {
   var source = this.context.createBufferSource();
   source.buffer = buffer;
   source.connect(this.gainNode);
   source.connect(this.context.destination);
-  source.start(this.context.currentTime);
+  source.start(time);
 };
 
 Machine.prototype.loadBuffers = function(audioFiles) {
@@ -101,6 +102,18 @@ Machine.prototype._finishedLoading = function (bufferList, loaderContext) {
     loaderContext.audioBuffers['cowbell'] = bufferList[6];
     loaderContext.audioBuffers['clave'] = bufferList[7];
 };
+
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function( callback ){
+        window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
 
 var machine = new Machine(context);
 machine.loadPattern(patterns.pattern1);
